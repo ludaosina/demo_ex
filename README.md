@@ -1,1 +1,2 @@
-# Luda Osina  DEMO_EX 1979 POSHLAYA
+# Luda Osina  DEMO_EX 1979 
+
