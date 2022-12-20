@@ -1,14 +1,14 @@
 import sqlite3 as sql
 import os
-
+from settings import DB_PATH
 
 
 class BaseWorker:
-    def init(self, base_path: str):
+    def __init__(self, base_path: str):
         self.base_path = base_path
 
-    def db_connect(self) -> tuple[sqlite3.Connection, sqlite3.Cursor]:
-        connection = sqlite3.connect(self.base_path, timeout=5)
+    def db_connect(self) -> tuple[sql.Connection, sql.Cursor]:
+        connection = sql.connect(self.base_path, timeout=5)
         cursor = connection.cursor()
         return connection, cursor
 
@@ -30,7 +30,7 @@ class BaseWorker:
                 res = res_ctx.fetchall()
             else:
                 res = res_ctx.fetchone()
-        except sqlite3.Error as ex:
+        except sql.Error as ex:
             print(ex)
             connect.close()
             return {'error': ex}
@@ -40,3 +40,4 @@ class BaseWorker:
 
 
 base_worker = BaseWorker(base_path=DB_PATH)
+
