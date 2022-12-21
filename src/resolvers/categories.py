@@ -13,7 +13,8 @@ def get_categories(categories_id: int):
 
 
 def get_all_categories():
-    return base_worker.execute(query="SELECT id, name FROM categories")
+    return base_worker.execute(query="SELECT id, name FROM categories",
+                               many=True)
 
 
 def update_categories(categories_id: int, new_data: Categories):

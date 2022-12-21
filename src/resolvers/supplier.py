@@ -7,18 +7,19 @@ def create_supplier(supplier: Supplier):
                                args=(supplier.address, supplier.phone, supplier.company_name))
 
 
-def get_all_supplier():
-    return base_worker.execute(query="SELECT id, address, phone, company_name FROM supplier")
-
-
 def get_supplier(supplier_id: int):
-    return base_worker.execute(query="SELECT address, phone, company_name FROM supplier WHERE id =?",
+    return base_worker.execute(query="SELECT id, address, phone, company_name FROM supplier WHERE id =?",
                                args=(supplier_id,))
+
+
+def get_all_supplier():
+    return base_worker.execute(query="SELECT id, address, phone, company_name FROM supplier",
+                               many=True)
 
 
 def update_supplier(supplier_id: int, new_data: Supplier):
     return base_worker.execute(query="UPDATE supplier SET address=?, phone=?, company_name=? WHERE id=?",
-                               args=[new_data.address, new_data.phone, new_data.company_name, supplier_id])
+                               args=(new_data.address, new_data.phone, new_data.company_name, supplier_id))
 
 
 def delete_supplier(supplier_id: int):

@@ -13,7 +13,8 @@ def get_pharmacy(pharmacy_id: int):
 
 
 def get_all_pharmacy():
-    return base_worker.execute(query="SELECT id, address, phone FROM pharmacy")
+    return base_worker.execute(query="SELECT id, address, phone FROM pharmacy",
+                               many=True)
 
 
 def update_pharmacy(pharmacy_id: int, new_data: Pharmacy):

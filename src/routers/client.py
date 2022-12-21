@@ -5,6 +5,11 @@ from resolvers.client import create_client, get_client, delete_client, update_cl
 client_router = fastapi.APIRouter(prefix="/client", tags=["Client"])
 
 
+@client_router.get("/")
+def start_page():
+    return ""
+
+
 @client_router.post("/create/")
 def new_client(client: Client):                                                                  
     return create_client(client)
