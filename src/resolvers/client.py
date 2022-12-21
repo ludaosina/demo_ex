@@ -7,8 +7,12 @@ def create_client(client: Client):
                                args=(client.name, client.phone))
 
 
+def get_all_clients():
+    return base_worker.execute(query="SELECT id, name, phone FROM client")
+
+
 def get_client(client_id: int):
-    return base_worker.execute(query="SELECT name, phone FROM client WHERE id = ?",
+    return base_worker.execute(query="SELECT id, name, phone FROM client WHERE id = ?",
                                args=(client_id,))
 
 

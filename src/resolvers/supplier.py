@@ -7,6 +7,10 @@ def create_supplier(supplier: Supplier):
                                args=(supplier.address, supplier.phone, supplier.company_name))
 
 
+def get_all_supplier():
+    return base_worker.execute(query="SELECT id, address, phone, company_name FROM supplier")
+
+
 def get_supplier(supplier_id: int):
     return base_worker.execute(query="SELECT address, phone, company_name FROM supplier WHERE id =?",
                                args=(supplier_id,))

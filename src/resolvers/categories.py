@@ -8,8 +8,12 @@ def create_categories(categories: Categories):
 
 
 def get_categories(categories_id: int):
-    return base_worker.execute(query="SELECT name FROM categories WHERE id = ?",
+    return base_worker.execute(query="SELECT id, name FROM categories WHERE id = ?",
                                args=(categories_id,))
+
+
+def get_all_categories():
+    return base_worker.execute(query="SELECT id, name FROM categories")
 
 
 def update_categories(categories_id: int, new_data: Categories):

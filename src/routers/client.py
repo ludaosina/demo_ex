@@ -1,22 +1,30 @@
-from sql_base.pharmacy_db import base_worker
-from sql_base.models import Pharmacy
+import fastapi
+from sql_base.models import Client
+from resolvers.client import create_client, get_client, delete_client, update_client, get_all_clients
+
+client_router = fastapi.APIRouter(prefix="/client", tags=["Client"])
 
 
-def create_pharmacy(pharmacy: Pharmacy):
-    return base_worker.execute(query="INSERT INTO pharmacy(address, number) VALUES (?, ?) RETURNING id",
-                               args=(pharmacy.address, pharmacy.phone))
+@client_router.post("/create/")
+def new_client(client: Client):                                                                  
+    return create_client(client)
 
 
-def get_pharmacy(pharmacy_id: int):
-    return base_worker.execute(query="SELECT address, phone FROM pharmacy WHERE id = ?",
-                               args=(pharmacy_id,))
+@client_router.get("/get/{client_id}")
+def search_client(client_id: int):
+    return get_client(client_id)
 
 
-def update_pharmacy(pharmacy_id: int, new_data: Pharmacy):
-    return base_worker.execute(query="UPDATE pharmacy SET address=?, phone=? WHERE id=?",
-                               args=(new_data.address, new_data.phone, pharmacy_id))
+@client_router.get("/get/")
+def search_all_clients():
+    return get_all_clients()
 
 
-def delete_pharmacy(pharmacy_id: int):
-    return base_worker.execute(query="DELETE FROM pharmacy WHERE id=? ",
-                               args=(pharmacy_id,))
+@client_router.put("/update/")
+def upd_client(client_id: int, new_data: Client):
+    return update_client(client_id, new_data)
+
+
+@client_router.delete("/delete/")
+def del_client(client_id: int):
+    return delete_client(client_id)

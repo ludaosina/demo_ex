@@ -32,6 +32,12 @@ class Medicines(BaseModelModify):
     price: int
 
 
-class list(BaseModelModify):
+class List(BaseModelModify):
     pharmacy_id: int
     medicines_id: int
+
+
+class Users(BaseModelModify):
+    login: str
+    password: str
+    power_level: int

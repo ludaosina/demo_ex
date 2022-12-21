@@ -31,3 +31,10 @@ pharmacy_id INTEGER NOT NULL,
 medicines_id INTEGER NOT NULL,
 FOREIGN KEY (pharmacy_id) REFERENCES pharmacy(id),
 FOREIGN KEY (medicines_id) REFERENCES medicines(id))
+
+CREATE TABLE IF NOT EXISTS users(
+id INTEGER PRIMARY KEY,
+login VARCHAR(50) NOT NULL,
+password VARCHAR(50) NOT NULL,
+power_level INTEGER NOT NULL
+)

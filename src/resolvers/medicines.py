@@ -7,8 +7,12 @@ def create_medicines(medicines: Medicines):
                                args=(medicines.category_id, medicines.name, medicines.price))
 
 
+def get_all_medicines():
+    return base_worker.execute(query="SELECT id, category_id, name, price FROM medicines")
+
+
 def get_medicines(medicines_id: int):
-    return base_worker.execute(query="SELECT category_id, name, price FROM medicines WHERE id = ?",
+    return base_worker.execute(query="SELECT id, category_id, name, price FROM medicines WHERE id = ?",
                                args=(medicines_id,))
 
 

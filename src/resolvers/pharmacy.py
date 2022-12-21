@@ -3,13 +3,17 @@ from sql_base.models import Pharmacy
 
 
 def create_pharmacy(pharmacy: Pharmacy):
-    return base_worker.execute(query="INSERT INTO pharmacy(address, number) VALUES (?, ?) RETURNING id",
+    return base_worker.execute(query="INSERT INTO pharmacy(address, phone) VALUES (?, ?) RETURNING id",
                                args=(pharmacy.address, pharmacy.phone))
 
 
 def get_pharmacy(pharmacy_id: int):
     return base_worker.execute(query="SELECT address, phone FROM pharmacy WHERE id = ?",
                                args=(pharmacy_id,))
+
+
+def get_all_pharmacy():
+    return base_worker.execute(query="SELECT id, address, phone FROM pharmacy")
 
 
 def update_pharmacy(pharmacy_id: int, new_data: Pharmacy):
