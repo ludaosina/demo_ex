@@ -1,5 +1,5 @@
-from sql_base.pharmacy_db import base_worker
-from sql_base.models import Users
+from server.sql_base.pharmacy_db import base_worker
+from server.sql_base.models import Users
 
 
 def create_users(user: Users):

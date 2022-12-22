@@ -1,6 +1,6 @@
 import fastapi
-from sql_base.models import List
-from resolvers.list import create_list, get_list, delete_list, update_list, get_all_list
+from server.sql_base.models import List
+from server.resolvers.list import create_list, get_list, delete_list, update_list, get_all_list
 
 list_router = fastapi.APIRouter(prefix="/list", tags=["List"])
 
@@ -25,11 +25,11 @@ def search_all_list():
     return get_all_list()
 
 
-@list_router.put("/update/")
+@list_router.put("/update/{list_id}")
 def upd_list(list_id: int, new_data: List):
     return update_list(list_id, new_data)
 
 
-@list_router.delete("/delete/")
+@list_router.delete("/delete/{list_id}")
 def del_list(list_id: int):
     return delete_list(list_id)

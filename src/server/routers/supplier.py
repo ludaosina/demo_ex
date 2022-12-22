@@ -1,6 +1,6 @@
 import fastapi
-from sql_base.models import Supplier
-from resolvers.supplier import create_supplier, get_supplier, delete_supplier, update_supplier, get_all_supplier
+from server.sql_base.models import Supplier
+from server.resolvers.supplier import create_supplier, get_supplier, delete_supplier, update_supplier, get_all_supplier
 
 supplier_router = fastapi.APIRouter(prefix="/supplier", tags=["Supplier"])
 
@@ -15,7 +15,7 @@ def new_supplier(supplier: Supplier):
     return create_supplier(supplier)
 
 
-@supplier_router.get("/get/{client_id}")
+@supplier_router.get("/get/{supplier_id}")
 def search_supplier(supplier_id: int):
     return get_supplier(supplier_id)
 
@@ -25,11 +25,11 @@ def search_all_supplier():
     return get_all_supplier()
 
 
-@supplier_router.put("/update/")
+@supplier_router.put("/update/{supplier_id}")
 def upd_supplier(supplier_id: int, new_data: Supplier):
     return update_supplier(supplier_id, new_data)
 
 
-@supplier_router.delete("/delete/")
+@supplier_router.delete("/delete/{supplier_id}")
 def del_supplier(supplier_id: int):
     return delete_supplier(supplier_id)

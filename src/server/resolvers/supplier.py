@@ -1,5 +1,5 @@
-from sql_base.pharmacy_db import base_worker
-from sql_base.models import Supplier
+from server.sql_base.pharmacy_db import base_worker
+from server.sql_base.models import Supplier
 
 
 def create_supplier(supplier: Supplier):

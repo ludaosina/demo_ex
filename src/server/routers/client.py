@@ -1,6 +1,6 @@
 import fastapi
-from sql_base.models import Client
-from resolvers.client import create_client, get_client, delete_client, update_client, get_all_clients
+from server.sql_base.models import Client
+from server.resolvers.client import create_client, get_client, delete_client, update_client, get_all_client
 
 client_router = fastapi.APIRouter(prefix="/client", tags=["Client"])
 
@@ -22,14 +22,14 @@ def search_client(client_id: int):
 
 @client_router.get("/get/")
 def search_all_clients():
-    return get_all_clients()
+    return get_all_client()
 
 
-@client_router.put("/update/")
+@client_router.put("/update/{client_id}")
 def upd_client(client_id: int, new_data: Client):
     return update_client(client_id, new_data)
 
 
-@client_router.delete("/delete/")
+@client_router.delete("/delete/{client_id}")
 def del_client(client_id: int):
     return delete_client(client_id)

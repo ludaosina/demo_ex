@@ -1,6 +1,6 @@
 import fastapi
-from sql_base.models import Medicines
-from resolvers.medicines import create_medicines, get_medicines, delete_medicines, update_medicines, get_all_medicines
+from server.sql_base.models import Medicines
+from server.resolvers.medicines import create_medicines, get_medicines, delete_medicines, update_medicines, get_all_medicines
 
 medicines_router = fastapi.APIRouter(prefix="/medicines", tags=["Medicines"])
 
@@ -25,11 +25,11 @@ def search_all_medicines():
     return get_all_medicines()
 
 
-@medicines_router.put("/update/")
+@medicines_router.put("/update/{medicines_id}")
 def upd_medicines(medicines_id: int, new_data: Medicines):
     return update_medicines(medicines_id, new_data)
 
 
-@medicines_router.delete("/delete/")
+@medicines_router.delete("/delete/{medicines_id}")
 def del_medicines(medicines_id: int):
     return delete_medicines(medicines_id)

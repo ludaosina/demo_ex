@@ -8,11 +8,11 @@
       <jdbc-url>jdbc:sqlite:identifier.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Apteka" uuid="042dde46-c0e4-4568-bf35-96740b0e684f">
+    <data-source source="LOCAL" name="Apteka" uuid="87861709-bd7d-4619-a498-7a186fc74d1e">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\JustKingYT\Documents\GitHub\demo_ex2\src\sql_base\Apteka.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\JustKingYT\Documents\GitHub\demo_ex2\src\server\sql_base\Apteka.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

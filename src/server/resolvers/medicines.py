@@ -1,5 +1,5 @@
-from sql_base.pharmacy_db import base_worker
-from sql_base.models import Medicines
+from server.sql_base.pharmacy_db import base_worker
+from server.sql_base.models import Medicines
 
 
 def create_medicines(medicines: Medicines):

@@ -1,6 +1,6 @@
 import fastapi
-from sql_base.models import Users
-from resolvers.users import create_users, get_users, delete_users, update_users, get_all_users
+from server.sql_base.models import Users
+from server.resolvers.users import create_users, get_users, delete_users, update_users, get_all_users
 
 users_router = fastapi.APIRouter(prefix="/users ", tags=["Users "])
 
@@ -25,11 +25,11 @@ def search_all_users():
     return get_all_users()
 
 
-@users_router.put("/update/")
+@users_router.put("/update/{users_id}")
 def upd_users(users_id: int, new_data: Users):
     return update_users(users_id, new_data)
 
 
-@users_router.delete("/delete/")
+@users_router.delete("/delete/{users_id}")
 def del_users(users_id: int):
     return delete_users(users_id)

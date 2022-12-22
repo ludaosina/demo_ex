@@ -30,7 +30,7 @@ id INTEGER PRIMARY KEY,
 pharmacy_id INTEGER NOT NULL,
 medicines_id INTEGER NOT NULL,
 FOREIGN KEY (pharmacy_id) REFERENCES pharmacy(id),
-FOREIGN KEY (medicines_id) REFERENCES medicines(id))
+FOREIGN KEY (medicines_id) REFERENCES medicines(id));
 
 CREATE TABLE IF NOT EXISTS users(
 id INTEGER PRIMARY KEY,
