@@ -18,4 +18,4 @@ def start_page():
 
 
 if __name__ == "__main__":
-    run("start_server:app", host=SERVER_HOST, port=SERVER_PORT)
+    run("start_server:app", reload=True, host=SERVER_HOST, port=SERVER_PORT)

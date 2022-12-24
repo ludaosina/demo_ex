@@ -37,7 +37,10 @@ class List(BaseModelModify):
     medicines_id: int
 
 
-class Users(BaseModelModify):
+class UserLogin(BaseModelModify):
     login: str
     password: str
+
+
+class Users(UserLogin):
     power_level: int

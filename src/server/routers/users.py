@@ -1,13 +1,22 @@
 import fastapi
-from server.sql_base.models import Users
-from server.resolvers.users import create_users, get_users, delete_users, update_users, get_all_users
+from server.sql_base.models import Users, UserLogin
+from server.resolvers.users import create_users, get_users, delete_users, update_users, get_all_users, check_login
 
-users_router = fastapi.APIRouter(prefix="/users ", tags=["Users "])
+users_router = fastapi.APIRouter(prefix="/users", tags=["Users"])
 
 
 @users_router.get("/")
 def start_page():
     return ""
+
+
+@users_router.get("/login/")
+def checking_login(login: UserLogin):
+    res = check_login(login)
+    if res:
+        return {"code": 200, "message": "login correct", "post_id": res}
+    else:
+        return {"code": 400, "message": "login incorrect, try again", "post_id": None}
 
 
 @users_router.post("/create/")
